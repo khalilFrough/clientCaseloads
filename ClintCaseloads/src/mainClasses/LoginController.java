@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import pso.PsoController;
 
 
+
 public class LoginController implements Initializable  {
 	
 	LoginModel loginModel = new LoginModel();
@@ -57,22 +58,24 @@ public class LoginController implements Initializable  {
 				
 				switch(((option)this.comboBox.getValue()).toString()) {
 				
-				case"cm":
+				case"CM":
 					CMLogin();
 					break;
-				case"pso":
+				case"PSO":
 					PSOLogin();
 					break;
 				
 				}
 			}
 			else {
-				
+				this.loginStatus.setText("Wrong UserName and Password");
 			}
 			
 		}catch(Exception localException) {
 			
 		}
+		
+		
 		
 		
 	}
@@ -83,14 +86,13 @@ public class LoginController implements Initializable  {
 			
 			Stage userStage= new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = (Pane)loader.load(getClass().getResource("/caseManagers/caseManager.fxml").openStream());
+			Pane root = (Pane)loader.load(getClass().getResource("/caseManagers//caseManager.fxml").openStream());
 			CaseManagerController cmControl = (CaseManagerController)loader.getController();
 			Scene scene= new Scene(root);
 			userStage.setScene(scene);
 			userStage.setTitle("Case Mangers CaseLoad");
 			userStage.setResizable(false);
 			userStage.show();
-			
 			
 		}catch(IOException ex) {
 			
@@ -104,15 +106,13 @@ public class LoginController implements Initializable  {
 		try {
 			Stage psoStage= new Stage(); 
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = (Pane)loader.load(getClass().getResource("/pso/pso.fxml").openStream());
+			Pane root = (Pane)loader.load(getClass().getResource("/pso//pso.fxml").openStream());
 			PsoController psoControl =(PsoController)loader.getController();
 			Scene scene = new Scene(root);
 			psoStage.setScene(scene);
 			psoStage.setTitle("PSO DashBoard");
 			psoStage.setResizable(false);
 			psoStage.show();
-			
-			
 			
 		}catch(IOException ex) {
 			ex.printStackTrace();
