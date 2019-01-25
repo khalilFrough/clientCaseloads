@@ -47,7 +47,14 @@ public class LoginModel {
 			return false; 
 			
 		}
-		
+		finally  {
+			try {
+			re.close();
+			pr.close();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 
 }
