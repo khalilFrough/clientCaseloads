@@ -13,6 +13,7 @@ public class LoginApp extends Application {
 		Scene scene= new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Client's CaseLoad");
+		stage.setResizable(false);
 		stage.show();
 	}
 	

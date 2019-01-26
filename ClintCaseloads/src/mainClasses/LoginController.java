@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import pso.PsoController;
-
+import mainClasses.option; 
 
 
 public class LoginController implements Initializable  {
@@ -42,57 +42,62 @@ public class LoginController implements Initializable  {
 			this.dbStatus.setText("Not Connected");
 		}
 		
-		
-		this.comboBox.setItems(FXCollections.observableArrayList(option.values()) );
+		this.comboBox.setItems(FXCollections.observableArrayList(option.values()));
 	}
 	
 //	this method is for the log in button
 	
+	@FXML
 	public void login(ActionEvent event) {
 		
 		try {
 			
 			if(this.loginModel.isLogin(this.userName.getText(), this.password.getText(),((option)this.comboBox.getValue()).toString())) {
+				//once the other window opens then the login window should close. 
 				Stage stage= (Stage)this.login.getScene().getWindow();
 				stage.close();
 				
+				//checking the cases for two users CMs and PSOs
 				switch(((option)this.comboBox.getValue()).toString()) {
 				
-				case"CM":
+				case "CM":
 					CMLogin();
 					break;
-				case"PSO":
+				case "PSO":
 					PSOLogin();
 					break;
-				
 				}
+				
+			}else {
+				this.loginStatus.setText("Wrong Username or password");
 			}
-			else {
-				this.loginStatus.setText("Wrong UserName and Password");
-			}
+			
 			
 		}catch(Exception localException) {
 			
 		}
-		
-		
-		
-		
+			
 	}
+	
+//	this method is called when CM is logged in
+	
+	
 	
 	public void CMLogin() {
 		
 		try {
 			
-			Stage userStage= new Stage();
+			Stage caseManagerStage= new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = (Pane)loader.load(getClass().getResource("/caseManagers//caseManager.fxml").openStream());
+			Pane root = (Pane)loader.load(getClass().getResource("//caseManagers//caseManager.fxml").openStream());
+			
 			CaseManagerController cmControl = (CaseManagerController)loader.getController();
+			
 			Scene scene= new Scene(root);
-			userStage.setScene(scene);
-			userStage.setTitle("Case Mangers CaseLoad");
-			userStage.setResizable(false);
-			userStage.show();
+			caseManagerStage.setScene(scene);
+			caseManagerStage.setTitle("Case Mangers CaseLoad");
+			caseManagerStage.setResizable(false);
+			caseManagerStage.show();
 			
 		}catch(IOException ex) {
 			
@@ -101,21 +106,22 @@ public class LoginController implements Initializable  {
 		
 	}
 	
+//	this method is for the PSO login
 	public void PSOLogin() {
 		
 		try {
 			Stage psoStage= new Stage(); 
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = (Pane)loader.load(getClass().getResource("/pso//pso.fxml").openStream());
-			PsoController psoControl =(PsoController)loader.getController();
-			Scene scene = new Scene(root);
+			FXMLLoader psoloader = new FXMLLoader();
+			Pane psoRoot = (Pane)psoloader.load(getClass().getResource("//pso//pso.fxml").openStream());
+			PsoController psoControl =(PsoController)psoloader.getController();
+			Scene scene = new Scene(psoRoot);
 			psoStage.setScene(scene);
 			psoStage.setTitle("PSO DashBoard");
 			psoStage.setResizable(false);
 			psoStage.show();
 			
-		}catch(IOException ex) {
-			ex.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
 	
 		}
 		
