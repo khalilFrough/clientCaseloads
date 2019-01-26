@@ -27,7 +27,7 @@ public class LoginController implements Initializable  {
 	@FXML 
 	private PasswordField password; 
 	@FXML
-	private ComboBox <option> comboBox;
+	private ComboBox<option>comboBox;
 	@FXML
 	private Button login; 
 	@FXML
@@ -57,24 +57,22 @@ public class LoginController implements Initializable  {
 				Stage stage= (Stage)this.login.getScene().getWindow();
 				stage.close();
 				
-				//checking the cases for two users CMs and PSOs
-				switch(((option)this.comboBox.getValue()).toString()) {
-				
-				case "CM":
-					CMLogin();
-					break;
-				case "PSO":
-					PSOLogin();
-					break;
-				}
+					//checking the cases for two users CMs and PSOs
+					switch(((option)this.comboBox.getValue()).toString()) {
+					case "CM":
+						CMLogin();
+						break;
+					case "PSO":
+						PSOLogin();
+						break;
+					}
 				
 			}else {
-				this.loginStatus.setText("Wrong Username or password");
+				this.loginStatus.setText("Wrong User or Password");
 			}
 			
-			
 		}catch(Exception localException) {
-			
+			localException.getMessage();
 		}
 			
 	}
@@ -82,14 +80,15 @@ public class LoginController implements Initializable  {
 //	this method is called when CM is logged in
 	
 	
-	
+//	this method is texted it works fine. 
 	public void CMLogin() {
+		System.out.println("something");
 		
 		try {
 			
 			Stage caseManagerStage= new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = (Pane)loader.load(getClass().getResource("//caseManagers//caseManager.fxml").openStream());
+			Pane root = (Pane)loader.load(getClass().getResource("/caseManagers//caseManagers.fxml").openStream());
 			
 			CaseManagerController cmControl = (CaseManagerController)loader.getController();
 			
@@ -102,17 +101,18 @@ public class LoginController implements Initializable  {
 		}catch(IOException ex) {
 			
 			ex.printStackTrace();
-		}
+		} 
 		
 	}
 	
 //	this method is for the PSO login
+//	this method is tested it works fine. 
 	public void PSOLogin() {
 		
 		try {
 			Stage psoStage= new Stage(); 
 			FXMLLoader psoloader = new FXMLLoader();
-			Pane psoRoot = (Pane)psoloader.load(getClass().getResource("//pso//pso.fxml").openStream());
+			Pane psoRoot = (Pane)psoloader.load(getClass().getResource("/pso//pso.fxml").openStream());
 			PsoController psoControl =(PsoController)psoloader.getController();
 			Scene scene = new Scene(psoRoot);
 			psoStage.setScene(scene);

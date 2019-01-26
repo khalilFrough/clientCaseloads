@@ -5,16 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException; 
 import dbClass.SqliteDbClass;
+
 public class LoginModel {
-	
 	Connection connection; 
 	
 	public LoginModel() {
 		
 		try {
 			this.connection= SqliteDbClass.getConnection();
-		}catch(SQLException ex){
-			ex.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
 			
 		}
 		if(this.connection==null) {
@@ -27,7 +27,7 @@ public class LoginModel {
 	
 	public boolean isLogin(String user, String pass, String opt)throws Exception {
 		PreparedStatement pr =null; 
-		ResultSet re= null; 
+		ResultSet rs= null; 
 		String sql= "SELECT * FROM login WHERE Username=? Password=? division=?";
 		
 		try {
@@ -35,22 +35,23 @@ public class LoginModel {
 			pr.setString(1, user);
 			pr.setString(2, pass);
 			pr.setString(3, opt);
-			re=pr.executeQuery(); 
+			rs=pr.executeQuery(); 
 			
-			if(re.next()) {
+			if(rs.next()) {
 				return true;
 			}
 				return false;
+				
 		}catch(SQLException ex) {
 			return false; 
 			
 		}
-		finally {
-			{
-				pr.close();
-				re.close();
-			}
-		}
+//		finally {
+//			
+//				pr.close();
+//				rs.close();
+//			
+//		}
 	}
 
 }
