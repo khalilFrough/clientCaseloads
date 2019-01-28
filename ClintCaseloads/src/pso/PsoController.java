@@ -47,7 +47,7 @@ public class PsoController implements Initializable {
 	private TableColumn<CaseManagersData, String> tableDob;
 	private SqliteDbClass dc; 
 	private ObservableList<CaseManagersData> cmData;
-	private String sql="SELECT * caseManagers";
+	private String sql= "SELECT * FROM caseManagers";
 	
 	
 	public void initialize(URL url, ResourceBundle rb) {
@@ -75,6 +75,7 @@ public class PsoController implements Initializable {
 			
 		}catch(SQLException ex) {
 			System.err.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 		
 //		display our data to the table
@@ -110,19 +111,19 @@ public class PsoController implements Initializable {
 	private void addCaseManager(ActionEvent event) {
 		String EnterCmData="INSERT INTO caseManagers(id, Name, LastName, email, DOB) VALUES(?,?,?,?,?) ";
 		
-		try {
-			
+		try {	
 			Connection conn= SqliteDbClass.getConnection();
 			PreparedStatement st= conn.prepareStatement(EnterCmData);
 			st.setString(1, this.id.getText());
 			st.setString(2, this.firstName.getText());
-			st.setString(3,this.lastName.getText());
+			st.setString(3,	this.lastName.getText());
 			st.setString(4, this.email.getText());
 			st.setString(5, this.date.getEditor().getText());
 			st.execute();
 			conn.close();
 			
 		}catch(SQLException ex) {
+			System.err.println(ex.getMessage());
 			ex.printStackTrace();
 			
 		}
