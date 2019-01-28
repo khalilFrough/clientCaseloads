@@ -15,11 +15,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import pso.PsoController;
 import mainClasses.option; 
-
+/*
+ this class is created to control the whole application. 
+ it controls the login page that gets the data from the LoginModel class. 
+ */
 
 public class LoginController implements Initializable  {
 	
+//	making a instance of LoginMode class. Later used it to read the data from database. 
+	
 	LoginModel loginModel = new LoginModel();
+//	some global variables which have direct links to the ids of the app components  
 	@FXML
 	private Label dbStatus;
 	@FXML
@@ -33,6 +39,8 @@ public class LoginController implements Initializable  {
 	@FXML
 	private Label loginStatus;
 	
+/* this method is used to indicate of the application is connected to the database 
+ it changes the label on the app to connected and not connected */
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		
@@ -45,13 +53,13 @@ public class LoginController implements Initializable  {
 		this.comboBox.setItems(FXCollections.observableArrayList(option.values()));
 	}
 	
-//	this method is for the log in button
+//	this method is for the log in button which also checks if the user entered the right credentials.  
 	
 	@FXML
 	public void login(ActionEvent event) {
 		
 		try {
-			
+//			checks if the text entered in the textfield match the user and password in the database. 
 			if(this.loginModel.isLogin(this.userName.getText(), this.password.getText(),((option)this.comboBox.getValue()).toString())) {
 				//once the other window opens then the login window should close. 
 				Stage stage= (Stage)this.login.getScene().getWindow();
@@ -80,7 +88,7 @@ public class LoginController implements Initializable  {
 //	this method is called when CM is logged in
 	
 	
-//	this method is texted it works fine. 
+//	this method is tested it works fine. 
 	public void CMLogin() {
 		System.out.println("something");
 		

@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+/*this is the main class which runs the application. */
 public class LoginApp extends Application {
 	
 	public void start(Stage stage) throws Exception {

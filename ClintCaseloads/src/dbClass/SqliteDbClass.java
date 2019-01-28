@@ -1,6 +1,7 @@
 package dbClass;
 import java.sql.*;
 
+// this class is created to establish the initial connection to the database, 
 public class SqliteDbClass {
 	
 	private static final String USERNAME="dbuser";
@@ -8,6 +9,7 @@ public class SqliteDbClass {
 	private static final String CONN= "jdbc:mysql://localhost//login";
 	private static final String SQCONN="jdbc:sqlite://Users//khalilfrough//Desktop//JavaFx//login.db";
 
+//	 getting the initial connection. 
 	public static Connection getConnection()throws SQLException {
 		
 		try {
