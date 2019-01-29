@@ -5,11 +5,11 @@ import javafx.beans.property.StringProperty;
 
 public class CaseManagersData {
 	
-	private StringProperty ID;
-	private StringProperty firstName;
-	private StringProperty lastName;
-	private StringProperty email;
-	private StringProperty dob; 
+	private final StringProperty ID;
+	private final StringProperty firstName;
+	private final StringProperty lastName;
+	private final StringProperty email;
+	private final StringProperty dob; 
 	
 //	creating a constructor for this class.
 	public CaseManagersData(String id, String firstName, String lastName, String email, String dob) {
@@ -25,47 +25,61 @@ public class CaseManagersData {
 	
 //	getters 
 	
-	public StringProperty getID() {
+	public String getID() {
+		return ID.get();
+	}
+	
+	public StringProperty IDProperty() {
 		return ID;
 	}
-
-	public StringProperty getFirstName() {
+	
+	public String getFirstName() {
+		return firstName.get();
+	}
+	
+	public StringProperty getFirstNameProperty() {
 		return firstName;
 	}
 
-	public StringProperty getLastName() {
-		return lastName;
+	public String getLastName() {
+		return lastName.get();
 	}
 
-	public StringProperty getEmail() {
+	public String getEmail() {
+		return email.get();
+	}
+	public StringProperty getEmailProperty() {
 		return email;
 	}
 
-	public StringProperty getDob() {
+	public String getDob() {
+		return dob.get();
+	}
+	public StringProperty getDobProperty() {
 		return dob;
 	}
 
 	
 //	setters 
 	
-	public void setID(StringProperty iD) {
-		ID = iD;
+	public void setID(String iD) {
+		this.ID.set(iD);
 	}
 
-	public void setFirstName(StringProperty firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String firstName) {
+		this.firstName.set(firstName);;
 	}
 
-	public void setLastName(StringProperty lastName) {
-		this.lastName = lastName;
+	public void setLastName(String lastName) {
+		this.lastName.set(lastName);
 	}
 
-	public void setEmail(StringProperty email) {
-		this.email = email;
+	public void setEmail(String email) {
+		this.email.set(email);
 	}
 
-	public void setDob(StringProperty dob) {
-		this.dob = dob;
+	public void setDob(String dob) {
+		this.dob.set(dob);
 	}
 	
 
