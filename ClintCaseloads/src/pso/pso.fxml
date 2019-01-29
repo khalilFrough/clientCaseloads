@@ -61,7 +61,7 @@
                                     <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <DatePicker fx:id="dob" promptText="DOB">
+                              <DatePicker fx:id="date" promptText="DOB">
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>

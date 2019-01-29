@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class CaseManagersData {
-	
 	private final StringProperty ID;
 	private final StringProperty firstName;
 	private final StringProperty lastName;
